@@ -7,11 +7,11 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    def item(self, name: str) -> WebElement:
+    def item(self, name:str):
         _xpath = self.locators.get(name)
-        msg = f"{self.__class__.__name__} has no xpath " + \
-              f"for element: {name}, " + \
-              f"may be typo? Exsist names is: {self.locators.keys()}"
         if _xpath is None:
-            raise AttributeError(msg)
+            raise AttributeError(
+                f"{self.__class__.__name__} has no xpath for element: {name}, "
+                f"may be typo? Exist names is: {self.locators.keys()}"
+                )
         return WebElement(driver=self.driver, xpath=_xpath)
