@@ -1,4 +1,4 @@
-from pages.elements import WebElement
+from .elements import WebElement
 
 
 class BasePage:
@@ -15,3 +15,4 @@ class BasePage:
         if _xpath is None:
             raise AttributeError(msg)
         return WebElement(driver=self.driver, xpath=_xpath)
+

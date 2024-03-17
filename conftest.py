@@ -1,11 +1,12 @@
 import pytest
-from get_browser import firefox, chrome
+from hillel_page_object.get_browser import firefox, chrome
+from .pages.home_page import HomePage
+from .pages.sign_up_page import SignUp
+from .pages.cabinet_page import CabinetPage
 
-from pages.home_page import HomePage
+URL = "https://magento.softwaretestingboard.com/"
 
-URL = "https://guest:welcome2qauto@qauto.forstudy.space/"
-
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def driver():
     _driver = firefox()
     _driver.maximize_window()
@@ -16,3 +17,11 @@ def driver():
 @pytest.fixture
 def home_page(driver):
     return HomePage(driver)
+
+@pytest.fixture
+def sign_up_page(driver):
+    return SignUp(driver)
+
+@pytest.fixture
+def cabinet_page(driver):
+    return CabinetPage(driver)
