@@ -1,4 +1,4 @@
-from pages.base_page import BasePage
+from .base_page import BasePage
 
 
 class HomePage(BasePage):
@@ -7,20 +7,9 @@ class HomePage(BasePage):
         super().__init__(driver)
 
     locators = dict(
-        menu_home='//a[text()="Home"]',
-        sign_in_button='//button[.="Sign In"]',
-        contacts_head='//h2',
-        sign_up_button='//button[.="Sign Up"]',
-        username_by='//[@name="email"]',
-        password_by="password",
-        signin_by='//form//div[.="Login"]',
+        sign_up_button_in_header = "//header//ul/li[3]/a"
         )
 
-    def login_valid_user(self, username, password):
-        username_by = self.item("username_by")
-        password_by = self.item("password_by")
-        signin_by = self.item("signin_by")
-
-        username_by.send_keys(username)
-        password_by.send_keys(password)
-        signin_by.click()
+    def open_sign_up_form(self):
+        sign_button_element = self.item("sign_up_button_in_header")
+        sign_button_element.click()
