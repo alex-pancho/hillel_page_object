@@ -5,7 +5,6 @@ USER root
 RUN apk add firefox
 RUN apk add python3
 RUN apk add py3-pip
-RUN mv /usr/lib/python3.11/EXTERNALLY-MANAGED /usr/lib/python3.11/EXTERNALLY-MANAGED.old
 # \
 #         && curl -O https://bootstrap.pypa.io/get-pip.py \
 #         && python3 get-pip.py
