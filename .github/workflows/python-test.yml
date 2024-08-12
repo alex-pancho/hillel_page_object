@@ -21,11 +21,15 @@ jobs:
     - name: Step 1 - Checkout
       uses: actions/checkout@v3
 
-    - name: Step 2 - Prepare Firefox
-      uses: browser-actions/setup-firefox@latest
+    # - name: Step 2 - Prepare Firefox
+    #   uses: browser-actions/setup-firefox@latest
+    - name: Step 2 - Prepare Chrome
+      uses: browser-actions/setup-chrome@v1
 
-    - name: Step 3 - Firefox version
-      run: firefox --version
+    # - name: Step 3 - Firefox version
+    #   run: firefox --version
+    - name: Step 3 - Chrome version
+      run: chrome --version
 
     - name: Step 4 - Set up Python 3.10
       uses: actions/setup-python@v4
