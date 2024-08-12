@@ -3,11 +3,15 @@
 
 import time
 
-from selenium.webdriver import ActionChains
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.common import exceptions as EXCEPT
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.ui import WebDriverWait
+
+
 
 
 class WebElement():
@@ -27,6 +31,8 @@ class WebElement():
                 self._web_driver = locate
             elif by == 'xpath':
                 self._locator = (By.XPATH, locate)
+            # elif by == 'css':
+            #     self._locator = (By.CSS_SELECTOR, locate)
 
     def find(self, timeout=10):
         """ Find element on the page. """
@@ -37,7 +43,7 @@ class WebElement():
             element = WebDriverWait(self._web_driver, timeout).until(
                EC.presence_of_element_located(self._locator)
             )
-        except:
+        except (EXCEPT.WebDriverException, EXCEPT.JavascriptException):
             print(('Element not found on the page!', 'red'))
 
         return element
@@ -74,7 +80,7 @@ class WebElement():
     def is_visible(self):
         """ Check is the element visible or not. """
 
-        element = self.find(timeout=0.1)
+        element = self.find(timeout=1)
 
         if element:
             return element.is_displayed()
@@ -110,7 +116,7 @@ class WebElement():
 
         return element
 
-    def send_keys(self, keys, wait=2):
+    def send_keys(self, keys, wait=0.5):
         """ Send keys to the element. """
 
         keys = keys.replace('\n', '\ue007')
@@ -217,6 +223,14 @@ class WebElement():
 
         # Delete element:
         self._web_driver.execute_script("arguments[0].remove();", element)
+    
+    def select(self, text: str):
+        """ Select element from the selector """
+
+        select_element = self.find()
+        _select = Select(select_element)
+        _select.select_by_visible_text(text)
+
 
 
 class ManyWebElements(WebElement):

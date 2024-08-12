@@ -12,7 +12,7 @@ class HomePage(BasePage):
         contacts_head='//h2',
         sign_up_button='//button[.="Sign Up"]',
         username_by='//[@name="email"]',
-        password_by="password",
+        password_by='//*[@id="signinPassword"]',
         signin_by='//form//div[.="Login"]',
         )
 
