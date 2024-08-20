@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+  firefox:
+    image: selenium/standalone-firefox
+    container_name: firefox
+    ports:
+      - "4444:4444"
+    environment:
+      - SE_OPTS=-port 4444
+
+  python:
+    image: python:3.11-slim
+    container_name: python
+    volumes:
+      - ./scripts:/scripts
+    working_dir: /scripts
+    command: bash
+
+
+volumes:
+  jenkins_home:
