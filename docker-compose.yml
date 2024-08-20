@@ -1,14 +1,18 @@
-version: '3'
-
 services:
   jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    privileged: true
+    user: root
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - 8080:8080
+      - 50000:50000
+    container_name: jenkinspython
     volumes:
       - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker:/usr/local/bin/docker
 
   firefox:
     image: selenium/standalone-firefox
@@ -17,14 +21,6 @@ services:
       - "4444:4444"
     environment:
       - SE_OPTS=-port 4444
-
-  python:
-    image: python:3.11-slim
-    container_name: python
-    volumes:
-      - ./scripts:/scripts
-    working_dir: /scripts
-    command: bash
 
 
 volumes:

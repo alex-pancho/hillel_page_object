@@ -5,6 +5,7 @@ USER root
 RUN apt-get update
 RUN apt-get install -y firefox-esr
 RUN apt-get install -y python3
+RUN apt-get install -y python3-venv
 RUN apt-get install -y python3-pip
 
 # To have a clean environment with the typical aliases
