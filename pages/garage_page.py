@@ -15,6 +15,7 @@ class GaragePage(BasePage):
         add='//button[. = "Add"]',
         new_car='//li[@class="car-item"]',
         guest_btn='//button[. = "Guest log in"]',
+        log_out ='//a[@class="btn btn-link text-danger btn-sidebar sidebar_btn" and contains(., "Log out")]'
         )
 
     def add_new_car(self, brand: str,  mileage: int, model: str = "",):
@@ -32,3 +33,7 @@ class GaragePage(BasePage):
         brand_select.select(brand)
         mileage_input.send_keys(str(mileage))
         add_button.click()
+  
+    def log_out_of_the_page(self):
+         self.item("guest_btn").click()
+         self.item("log_out").click()
