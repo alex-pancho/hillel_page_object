@@ -14,6 +14,8 @@ class HomePage(BasePage):
         username_by='//[@name="email"]',
         password_by='//*[@id="signinPassword"]',
         signin_by='//form//div[.="Login"]',
+        contact_section='// * [ @ id = "contactsSection"] / div / div / div[2] / a[1]',
+        guest_button='/html/body/app-root/app-global-layout/div/div/app-header/header/div/div/div[2]/button[1]'
         )
 
     def login_valid_user(self, username, password):
