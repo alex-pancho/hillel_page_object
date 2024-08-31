@@ -14,7 +14,7 @@ class GaragePage(BasePage):
         mileage='//*[@id="addCarMileage"]',
         add='//button[. = "Add"]',
         new_car='//li[@class="car-item"]',
-        guest_btn='//button[. = "Guest log in"]',
+        guest_btn='/html/body/app-root/app-global-layout/div/div/app-header/header/div/div/div[2]/button[1]',
         )
 
     def add_new_car(self, brand: str,  mileage: int, model: str = "",):
