@@ -7,10 +7,10 @@ class EmailSignup(BasePage):
         super().__init__(driver)
 
     locators = dict(
-        login_with_facebook_button='//form[@class="_aah-"]//button[@type="button"]',
+        login_with_facebook_button='//button[.="Log in with Facebook"]',
 
         mobile_number_email_input='//input[@aria-label="Mobile Number or Email"]',
-        password_input='//input[@aria-label="Password"',
+        password_input='//input[@aria-label="Password"]',
         full_name_input='//input[@aria-label="Full Name"]',
         username_input='//input[@aria-label="Username"]',
 

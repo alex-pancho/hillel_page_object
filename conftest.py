@@ -14,26 +14,29 @@ URL = "https://www.instagram.com"
 def driver():
     _driver = chrome(True)
     _driver.maximize_window()
-    _driver.get(URL)
     yield _driver
     _driver.quit()
 
 
 @pytest.fixture
 def signup_page(driver):
+    driver.get(f"{URL}/accounts/emailsignup/")
     return EmailSignup(driver)
 
 
 @pytest.fixture
 def login_page(driver):
+    driver.get(f"{URL}/accounts/login/")
     return Login(driver)
 
 
 @pytest.fixture
 def main_wo_login(driver):
+    driver.get(URL)
     return MainWOSign(driver)
 
 
 @pytest.fixture
 def main_page(driver):
+    driver.get(URL)
     return Main(driver)
