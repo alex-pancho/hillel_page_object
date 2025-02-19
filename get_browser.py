@@ -21,10 +21,4 @@ def chrome(debug=False):
 
 
 if __name__ == "__main__":
-    import pathlib
-    # driver = firefox()
-    driver = chrome()
-    driver.get("https://qauto.forstudy.space/")
-    screen_path = pathlib.Path(__file__).parent / "screenshot.png"
-    driver.save_screenshot(f'{screen_path}')
-    driver.close()
+    pass

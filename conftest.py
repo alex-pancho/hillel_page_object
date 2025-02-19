@@ -1,10 +1,14 @@
 import pytest
 from get_browser import firefox, chrome
 
-from pages.home_page import HomePage
-from pages.garage_page import GaragePage
+from pages.emailsignup import EmailSignup
+from pages.login import Login
+from pages.main_unreg import MainWOSign
+from pages.main import Main
 
-URL = "https://guest:welcome2qauto@qauto.forstudy.space"
+
+URL = "https://www.instagram.com"
+
 
 @pytest.fixture(scope="module")
 def driver():
@@ -14,10 +18,22 @@ def driver():
     yield _driver
     _driver.quit()
 
-@pytest.fixture
-def home_page(driver):
-    return HomePage(driver)
 
 @pytest.fixture
-def garage_page(driver):
-    return GaragePage(driver)
+def signup_page(driver):
+    return EmailSignup(driver)
+
+
+@pytest.fixture
+def login_page(driver):
+    return Login(driver)
+
+
+@pytest.fixture
+def main_wo_login(driver):
+    return MainWOSign(driver)
+
+
+@pytest.fixture
+def main_page(driver):
+    return Main(driver)
