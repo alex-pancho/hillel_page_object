@@ -1,4 +1,5 @@
 import pytest
+import os
 from get_browser import firefox, chrome
 
 from pages.emailsignup import EmailSignup
@@ -12,7 +13,8 @@ URL = "https://www.instagram.com"
 
 @pytest.fixture(scope="module")
 def driver():
-    _driver = chrome(True)
+    headlees = os.name == "nt"
+    _driver = chrome(headlees) # by default run healess in linux
     _driver.maximize_window()
     yield _driver
     _driver.quit()
