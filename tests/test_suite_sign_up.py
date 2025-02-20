@@ -3,7 +3,9 @@ import pytest
 
 def test_is_exsist_login_with_facebook_button(signup_page):
     element = signup_page.item("login_with_facebook_button")
+    signup_page.screenshot() if not element.is_visible() else ""
     assert element.is_visible(), f"Not found: {element._locator}"
+
 
 def test_is_exsist_register_form(signup_page):
     mob_or_phone = signup_page.item("mobile_number_email_input")

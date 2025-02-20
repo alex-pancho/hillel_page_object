@@ -29,6 +29,7 @@ class EmailSignup(BasePage):
         username_input_field = self.item("username_input")
         signup = self.item("signup_button")
 
+
         mobile_number_email_field.send_keys(number_or_mail)
         password_field.send_keys(password)
         full_name_input_field.send_keys(full_name)

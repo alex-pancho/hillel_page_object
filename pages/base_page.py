@@ -1,3 +1,4 @@
+from datetime import datetime
 from pages.elements import WebElement
 
 
@@ -6,6 +7,12 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
+    
+    def screenshot(self):
+        title = str(self.driver.title).replace(" ", "_")
+        current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        filename = f"{current_time}_{title}.png"
+        self.driver.save_screenshot(filename)
 
     def item(self, name: str) -> WebElement:
         _xpath = self.locators.get(name)
